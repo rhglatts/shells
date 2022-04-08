@@ -1,0 +1,45 @@
+#Problem 1
+
+#(1)
+shell_types = ['Puka', 'Cone', 'Driftwood', 'Sea Glass', 'Starfish']
+
+#(2)
+print("Enter the number of shells collected for each ")
+counts = []
+
+#for each shell in shell_types, output the shell name and ask the user for 
+#how many they collected. then ad to counts[] array
+for item in shell_types:
+    print(item, ": ", end = "")
+    count = int(input(""))
+    counts.append(count)
+
+#(3)
+prices = [1.00, 1.50, 0.50, 2.00, 2.50]
+shells = []
+#for each shell name, count, and price, add them to a tuple and append the tuple to a list of tuples
+for a, b, c in zip(shell_types, counts, prices):
+    temp = (a, b, c)
+    shells.append(temp)
+
+#(4)
+total_count = 0
+worth = 0
+#for each shell type, count, and price, add each count to the total and add the counts*prices to
+#the total
+for a, b, c in zip(shell_types, counts, prices):
+    total_count += b
+    worth += b*c
+print("Total: ",total_count)
+print("Total (worth) of sea shells:", worth)
+print("")
+
+#5
+#prints barchart of how many shells were collected by each type
+import numpy as np
+import matplotlib.pyplot as plt
+plt.bar(shell_types,counts)
+plt.title('Shells Found in Hawaii')
+plt.xlabel('Types of Shells')
+plt.ylabel('Number of Shells Found')
+plt.show()
